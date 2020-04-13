@@ -26,10 +26,10 @@ def eval(model, dataset):
         predictions.append(p)
     predictions = np.concatenate(predictions) >= 0.5
     targets = np.concatenate(targets)
-    return np.mean(predictions==target)
+    return np.mean(predictions==targets)
         
 def train(model, train_dataset, val_dataset):
-    for epoch in NUM_EPOCHS:
+    for epoch in range(NUM_EPOCHS):
         model.train()
         for x, l, y in train_dataset.get_batches(batch_size=BATCH_SIZE):
             optimizer.zero_grad()
@@ -41,4 +41,4 @@ def train(model, train_dataset, val_dataset):
         print('validation accuracy = %f'%accuracy)
 
 
-train(model, train_dataset, val_dataset)
+train(model, traindata, valdata)

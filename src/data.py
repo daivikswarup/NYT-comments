@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from nltk.tokenize import word_tokenize
 from collections import Counter, defaultdict
@@ -44,11 +45,11 @@ class dataset_lstm:
             wordcounts = Counter()
             for comment in self.comments:
                 wordcounts += Counter(comment)
-            most_common = workcounts.most_common(vocab_size)
+            most_common = wordcounts.most_common(vocab_size)
             vocab = [x[0] for x in most_common] + [UNK_TOKEN]
         self.unk_id = len(vocab)
         self.pad_id = len(vocab) + 1
-        vocab_dict = defaultdict(self.unk_id)
+        vocab_dict = defaultdict(lambda:self.unk_id)
         for i, word in enumerate(vocab):
             vocab_dict[word] = i
         self.vocab = vocab
@@ -71,12 +72,12 @@ class dataset_lstm:
             perm = np.arange(len(self.comments))
 
         for i in range(0, len(self.comments), batch_size):
-            x = [torch.tensor(self.encoded_comments[j], dtype=torch.int32,
+            x = [torch.tensor(self.encoded_comments[j], dtype=torch.long,
                             device=DEVICE) for j in perm[i:i+batch_size]]
             lens = torch.tensor(self.lengths[perm[i:i+batch_size]],
-                                dtype=torch.int32, device=DEVICE)
+                                dtype=torch.long, device=DEVICE)
             labels = torch.tensor(self.labels[perm[i:i+batch_size]],
-                                  dtype=torch.int32, device=DEVICE)
+                                  dtype=torch.float, device=DEVICE)
             yield x, lens, labels
 
             
