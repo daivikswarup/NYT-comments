@@ -14,7 +14,6 @@ for fil in tqdm.tqdm(os.listdir(inputdir)):
     fscores = []
     with open(fname, 'r') as f:
         for line in f.read().splitlines():
-            print(line)
             if not line.strip():
                 continue
             comment, score = line.split('\t')
@@ -26,11 +25,11 @@ for fil in tqdm.tqdm(os.listdir(inputdir)):
         median = np.median(fscores)
         label = [ int(x>=median) for x in fscores]
         comments.extend(fcomments)
-        labels.append(label)
+        labels.extend(label)
 
 with open(outfile, 'w') as f:
     for comment, label in zip(comments, labels):
-        outfile.write('%s\t%d\n'%(comment, label))
+        f.write('%s\t%d\n'%(comment, label))
 
 
         

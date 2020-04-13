@@ -9,7 +9,9 @@ np.random.seed(0)
 
 def clean(comment):
     html_pattern = re.compile('<.*?>')
-    return re.sub('[\t\n]', ' ',re.sub(html_pattern, ' ', comment))
+    text = re.sub('[\t\n\r]', ' ',re.sub(html_pattern, ' ', comment))
+    asci = re.sub(r'[^\x00-\x7F]+',' ', text) 
+    return asci
 
 def read_data(datadir= '../data'):
     all_data = defaultdict(list)
@@ -50,10 +52,11 @@ test_split = 0.2
 
 train_len = int(train_split * len(articles))
 val_len = int(val_split * len(articles))
+test_len = len(articles) - train_len - val_len
 
 training_data = articles[:train_len]
 val_data = articles[train_len:train_len+val_len]
-test_data = articles[-train_len+val_len:]
+test_data = articles[-test_len:]
 
 writedir('train', data, training_data)
 writedir('val', data, val_data)
