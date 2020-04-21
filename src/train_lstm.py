@@ -6,10 +6,10 @@ import numpy as np
 from settings import *
 
 
-traindata = dataset_lstm('train.txt', vocab_size = VOCAB_SIZE)
+traindata = dataset_lstm('train_90_10.txt', vocab_size = VOCAB_SIZE)
 vocab = traindata.vocab
 pad_id = traindata.pad_id
-valdata = dataset_lstm('val.txt', vocab = vocab)
+valdata = dataset_lstm('val_90_10.txt', vocab = vocab, vocab_size=VOCAB_SIZE)
 
 model = lstm(VOCAB_SIZE, EMBEDDING_DIM, NUM_LAYERS, pad_id)
 model = model.to(device=DEVICE)
@@ -38,7 +38,7 @@ def train(model, train_dataset, val_dataset):
             loss.backward()
             optimizer.step()
         accuracy = eval(model, val_dataset)
-        print('validation accuracy = %f'%accuracy)
+        print('Epoch # %d \t Validation accuracy = %f'%(epoch, accuracy))
 
 
 train(model, traindata, valdata)

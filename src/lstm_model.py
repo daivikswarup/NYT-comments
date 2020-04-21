@@ -16,12 +16,9 @@ class lstm(nn.Module):
 
 
     def forward(self, x, lengths):
-        print(lengths.shape)
         padded = nn.utils.rnn.pad_sequence(x, batch_first=True,
                                            padding_value=self.pad_id)
-        print(padded.shape)
         embeddings = self.embedding(padded)
-        print(embeddings)
         packed = nn.utils.rnn.pack_padded_sequence(embeddings,lengths, \
                                                    batch_first = True,
                                                    enforce_sorted=False)
