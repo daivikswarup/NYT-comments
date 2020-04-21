@@ -23,9 +23,18 @@ for fil in tqdm.tqdm(os.listdir(inputdir)):
         if len(fscores) == 1 or max(fscores) == 0:
             continue
         median = np.median(fscores)
-        label = [ int(x>=median) for x in fscores]
-        comments.extend(fcomments)
-        labels.extend(label)
+        per90 = np.percentile(fscores, 90)
+        per10 = np.percentile(fscores, 10)
+        for comment, score in zip(fcomments, fscores):
+            if score >= per90:
+                comments.append(comment)
+                labels.append(1)
+            elif score <= per10:
+                comments.append(comment)
+                labels.append(0)
+        # label = [ int(x>=median) for x in fscores]
+        # comments.extend(fcomments)
+        # labels.extend(label)
 
 with open(outfile, 'w') as f:
     for comment, label in zip(comments, labels):
