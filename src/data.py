@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import tqdm
 import torch
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from nltk.tokenize import word_tokenize
@@ -38,19 +39,23 @@ class dataset_lstm:
         self.comments = []
         self.labels = []
         with open(fil, 'r') as f:
-            for line in f.readlines():
+            for line in tqdm.tqdm(f.read().splitlines()):
                 comment, label = line.split('\t')
-                self.comments.append(self.get_tokens(comment))
+                tokens = self.get_tokens(comment)
+                if len(tokens) == 0:
+                    continue
+                self.comments.append(tokens)
                 self.labels.append(int(label))
         self.labels = np.asarray(self.labels)
         if vocab is None:
             wordcounts = Counter()
-            for comment in self.comments:
-                wordcounts += Counter(comment)
+            for comment in tqdm.tqdm(self.comments):
+                for word in comment:
+                    wordcounts[word] += 1
             most_common = wordcounts.most_common(vocab_size)
             vocab = [x[0] for x in most_common] + [UNK_TOKEN]
-        self.unk_id = len(vocab)
-        self.pad_id = len(vocab) + 1
+        self.unk_id = vocab_size
+        self.pad_id = vocab_size + 1
         vocab_dict = defaultdict(lambda:self.unk_id)
         for i, word in enumerate(vocab):
             vocab_dict[word] = i
@@ -58,8 +63,9 @@ class dataset_lstm:
         self.vocab_dict = vocab_dict
         self.encoded_comments = [np.asarray([self.vocab_dict[w] for w in \
                                              comment]) for comment in \
-                                 self.comments]
-        self.lengths = np.array([len(com) for com in self.encoded_comments])
+                                 tqdm.tqdm(self.comments)]
+        self.lengths = np.array([len(com) for com in
+                                 tqdm.tqdm(self.encoded_comments)])
 
 
     def get_tokens(self, comment):
@@ -73,7 +79,7 @@ class dataset_lstm:
         else:
             perm = np.arange(len(self.comments))
 
-        for i in range(0, len(self.comments), batch_size):
+        for i in tqdm.trange(0, len(self.comments), batch_size):
             x = [torch.tensor(self.encoded_comments[j], dtype=torch.long,
                             device=DEVICE) for j in perm[i:i+batch_size]]
             lens = torch.tensor(self.lengths[perm[i:i+batch_size]],
