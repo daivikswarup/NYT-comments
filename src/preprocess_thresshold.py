@@ -1,3 +1,7 @@
+# Takes an input directory or articles
+# writes a tsv text file with comment, class
+# thresholds at 80-20
+
 import os
 import sys
 import tqdm
@@ -23,8 +27,8 @@ for fil in tqdm.tqdm(os.listdir(inputdir)):
         if len(fscores) == 1 or max(fscores) == 0:
             continue
         median = np.median(fscores)
-        per90 = np.percentile(fscores, 90)
-        per10 = np.percentile(fscores, 10)
+        per90 = np.percentile(fscores, 80)
+        per10 = np.percentile(fscores, 20)
         for comment, score in zip(fcomments, fscores):
             if score >= per90:
                 comments.append(comment)

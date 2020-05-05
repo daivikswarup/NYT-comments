@@ -1,4 +1,5 @@
 import pandas as pd
+from nltk.tokenize import word_tokenize, sent_tokenize
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -60,5 +61,19 @@ plt.xlabel('number of recommendations')
 plt.ylabel('number of comments')
 plt.show()
 
+# wlen = [len(word_tokenize(x)) for x in tqdm.tqdm(comments)] 
+slen = [len(sent_tokenize(x)) for x in tqdm.tqdm(comments)]
+
+print(np.mean(slen))
+print(np.median(slen))
+
+# plt.hist(wlen, bins=100)
+# plt.xlabel('number of words')
+# plt.ylabel('number of comments')
+# plt.show()
+plt.hist(slen, bins=100)
+plt.xlabel('number of sentences')
+plt.ylabel('number of comments')
+plt.show()
 
 

@@ -20,16 +20,23 @@ def read_data(datadir= '../data'):
         if not fil.startswith('Comments'):
             continue
         data = pd.read_csv(fname).to_dict('records')
+        lis = []
         for row in tqdm.tqdm(data):
+            if int(row['depth']) != 1:
+                continue
             all_data[row['articleID']].append((clean(row['commentBody']),
                                                row['recommendations']))
+    sorted_data = {}
     for key in all_data:
         comments = all_data[key]
         _,reccommends = zip(*comments)
+        if max(reccommends) == 0:
+            # remove articles with insufficient data
+            continue
         argsort = np.argsort(reccommends)
         sorted_comments = [comments[i] for i in argsort[::-1]]
-        all_data[key] = sorted_comments
-    return all_data
+        sorted_data[key] = sorted_comments
+    return sorted_data
 
 def writedir(split, data, keys, datadir='../data'):
     folder = os.path.join(datadir, split)

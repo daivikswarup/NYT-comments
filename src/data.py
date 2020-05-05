@@ -8,6 +8,7 @@ from collections import Counter, defaultdict
 from settings import *
 import tqdm
 
+
 class dataset:
     def __init__(self, fil, vectorizer=None):
         self.comments = []
@@ -18,8 +19,9 @@ class dataset:
                 self.comments.append(comment)
                 self.labels.append(int(label))
         if vectorizer is None:
-            # vectorizer = TfidfVectorizer(ngram_range=(1,2))
-            vectorizer = CountVectorizer(ngram_range=(1,2))
+            # vectorizer = TfidfVectorizer(ngram_range=(1,2), max_features=200000)
+            vectorizer = CountVectorizer(ngram_range = (1,2),\
+                                         max_features=200000)
             vectorizer.fit(self.comments)
         self.vectorizer = vectorizer
         self.vectors = self.vectorizer.transform(self.comments)
