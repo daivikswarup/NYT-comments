@@ -2,3 +2,5 @@ data/
 **/*.pyc
 **/*.txt
 **/*.out
+**/*.pt
+**/*.err
