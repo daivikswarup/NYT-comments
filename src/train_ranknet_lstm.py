@@ -10,9 +10,11 @@ import pickle
 import os
 from settings import *
 
+P = 5
+
 def dcg(args, rels):
     score = 0.0
-    for i in range(len(args)):
+    for i in range(min(len(args), P)):
         score += (np.exp2(rels[args[i]]) -1.0)/np.log(2+i)
     return score
 
@@ -82,7 +84,7 @@ if __name__ == '__main__':
         with open('dataset_lstm.pkl', 'rb') as f:
             traindata, valdata = pickle.load(f)
     else:
-        #traindata = dataset_ranking_lstm('../data/train', vocab_size=VOCAB_SIZE)
+        traindata = dataset_ranking_lstm('../data/train', vocab_size=VOCAB_SIZE)
         # vocab  = traindata.vocab
         vocab = None
         valdata = dataset_ranking_lstm('../data/val', vocab)
@@ -90,9 +92,10 @@ if __name__ == '__main__':
             # pickle.dump((traindata, valdata), f)
         #     pass
     print(eval_random(valdata))
-    exit(0)
+    # exit(0)
     model = LSTM_ranker(traindata.vocab.vocab_size,\
-                        EMBEDDING_DIM,NUM_LAYERS,traindata.vocab.pad_id).double().cuda()
+                        EMBEDDING_DIM,NUM_LAYERS,traindata.vocab.pad_id,
+                        traindata.vocab.get_glove()).double().cuda()
     if os.path.exists('ranker_lstm.pt'):
         model.load_state_dict(torch.load('ranker_lstm.pt'))
     else:

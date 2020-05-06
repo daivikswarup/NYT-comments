@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 import sys
 from sklearn import preprocessing
+from sklearn.neural_network import MLPClassifier
 
 
 
@@ -14,10 +15,12 @@ testdata = dataset('test_80_20.txt', vectorizer)
 
 trainx, trainy = traindata.get_xy()
 valx, valy = valdata.get_xy()
+print(trainy)
 
 
 print('training')
 clf = LogisticRegression(random_state=0, verbose=1,max_iter=1000).fit(trainx, trainy)
+# clf = MLPClassifier(random_state=0, verbose=1,max_iter=1000).fit(trainx, trainy)
 
 print(clf.score(valx, valy))
 

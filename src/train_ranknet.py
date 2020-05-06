@@ -9,9 +9,12 @@ import numpy as np
 import pickle
 import os
 
+
+P = 5
+
 def dcg(args, rels):
     score = 0.0
-    for i in range(len(args)):
+    for i in range(min(len(args), P)):
         score += (np.exp2(rels[args[i]]) -1.0)/np.log(2+i)
     return score
 
@@ -40,8 +43,8 @@ def eval_random(dataset):
     for vecs, scores in dataset.eval_batches():
         # vecs = torch.tensor(vecs).cuda()
         # preds = model(vecs)
-        preds = np.random.randn(vecs.shape[0])
-        preds = np.zeros(vecs.shape[0])
+        preds = np.random.randn(vecs.shape[0], 1)
+        # preds = np.zeros((vecs.shape[0],1))
         ndcgs.append(compute_ndcg(preds, scores))
     return np.mean(ndcgs)
 
@@ -84,10 +87,10 @@ if __name__ == '__main__':
             pickle.dump((traindata, valdata), f)
     print(traindata.num_features)
     model = ranker(traindata.num_features).double().cuda()
-    if os.path.exists('ranker.pt'):
-        model.load_state_dict(torch.load('ranker.pt'))
+    if os.path.exists('ranker_lin.pt'):
+        model.load_state_dict(torch.load('ranker_lin.pt'))
     else:
-        print(eval(model, valdata))
+        # print(eval(model, valdata))
         train(model, traindata, valdata, 10, 3e-4, 256)
     print(eval(model, valdata))
     print(eval_random(valdata))

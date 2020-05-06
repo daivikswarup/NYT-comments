@@ -6,12 +6,12 @@ import numpy as np
 from settings import *
 
 
-traindata = dataset_lstm('train_90_10.txt', vocab_size = VOCAB_SIZE)
+traindata = dataset_lstm('train_80_20.txt', vocab_size = VOCAB_SIZE)
 vocab = traindata.vocab
-pad_id = traindata.pad_id
-valdata = dataset_lstm('val_90_10.txt', vocab = vocab, vocab_size=VOCAB_SIZE)
+pad_id = traindata.vocab.pad_id
+valdata = dataset_lstm('val_80_20.txt', vocab = vocab, vocab_size=VOCAB_SIZE)
 
-model = lstm(VOCAB_SIZE, EMBEDDING_DIM, NUM_LAYERS, pad_id)
+model = lstm(VOCAB_SIZE, EMBEDDING_DIM, NUM_LAYERS, pad_id, vocab.get_glove())
 model = model.to(device=DEVICE)
 criterion = nn.BCEWithLogitsLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
@@ -39,6 +39,7 @@ def train(model, train_dataset, val_dataset):
             optimizer.step()
         accuracy = eval(model, val_dataset)
         print('Epoch # %d \t Validation accuracy = %f'%(epoch, accuracy))
+        torch.save(model.state_dict(), 'models/lstm_glove_ft.pt')
 
 
 train(model, traindata, valdata)

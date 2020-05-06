@@ -25,7 +25,7 @@ class ranker(nn.Module):
 
     """Docstring for ranker. """
 
-    def __init__(self, num_features, hidden_dims = [256, 64]):
+    def __init__(self, num_features, hidden_dims = [100]):
         """TODO: to be defined. """
         nn.Module.__init__(self)
         self.mlp = MLP(num_features, hidden_dims)
