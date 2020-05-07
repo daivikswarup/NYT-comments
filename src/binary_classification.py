@@ -34,6 +34,9 @@ with open('gt.pkl', 'wb') as f:
     pickle.dump(valy, f)
 
 
+with open('clf.pkl', 'wb') as f:
+    pickle.dump([clf, vectorizer], f)
+
 if len(sys.argv) > 3:
     with open(sys.argv[3], 'r') as f:
         lines = f.readlines()
