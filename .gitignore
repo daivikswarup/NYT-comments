@@ -7,3 +7,6 @@ data/
 **/*.pkl.old
 **/*.pkl
 **/*.err
+**/*.log
+**/*.zip
+**/*.pt.old
