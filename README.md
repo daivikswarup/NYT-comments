@@ -3,7 +3,7 @@ This work was done as a part of CS685.
 Author: Daivik Swarup  
 
 Download data from [here](https://www.kaggle.com/aashita/nyt-comments)  
-##Preprocessing
+## Preprocessing
 Split data into train, test, val splits:
 ```bash
 python preprocess.py
@@ -16,7 +16,7 @@ python preprocess_threshold <PATH-TO-VAL-DIR> val_80_20.txt
 python preprocess_threshold <PATH-TO-TEST-DIR> test_80_20.txt   
 ```
 
-##Train classifiers
+## Train classifiers
 
 ```bash
 python binary_classification.py <VECTORIZER> output.pkl
@@ -29,7 +29,7 @@ python train_lstm.py
 ```
 
 
-##Train rankers
+## Train rankers
 ```bash
 python train_ranknet.py <VECTORIZER> model.pt
 ```
@@ -41,5 +41,5 @@ python train_ranknet_lstm.py
 ```
 
 
-##Misc
+## Misc  
 Scripts in the misc directory are self explanatory.
