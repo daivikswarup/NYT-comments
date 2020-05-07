@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CoreNLP-to-HTML.xsl" type="text/xsl"?>
+<root>
+  <document>
+    <docId>100004.txt</docId>
+    <sentences>
+      <sentence id="1">
+        <tokens>
+          <token id="1">
+            <word>Cathy</word>
+            <lemma>Cathy</lemma>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>5</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>PERSON</NER>
+          </token>
+          <token id="2">
+            <word>from</word>
+            <lemma>from</lemma>
+            <CharacterOffsetBegin>6</CharacterOffsetBegin>
+            <CharacterOffsetEnd>10</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="3">
+            <word>Hopewell</word>
+            <lemma>Hopewell</lemma>
+            <CharacterOffsetBegin>11</CharacterOffsetBegin>
+            <CharacterOffsetEnd>19</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>CITY</NER>
+          </token>
+          <token id="4">
+            <word>Junction</word>
+            <lemma>Junction</lemma>
+            <CharacterOffsetBegin>20</CharacterOffsetBegin>
+            <CharacterOffsetEnd>28</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>LOCATION</NER>
+          </token>
+          <token id="5">
+            <word>:</word>
+            <lemma>:</lemma>
+            <CharacterOffsetBegin>28</CharacterOffsetBegin>
+            <CharacterOffsetEnd>29</CharacterOffsetEnd>
+            <POS>:</POS>
+            <NER>O</NER>
+          </token>
+          <token id="6">
+            <word>What</word>
+            <lemma>what</lemma>
+            <CharacterOffsetBegin>32</CharacterOffsetBegin>
+            <CharacterOffsetEnd>36</CharacterOffsetEnd>
+            <POS>WP</POS>
+            <NER>O</NER>
+          </token>
+          <token id="7">
+            <word>she</word>
+            <lemma>she</lemma>
+            <CharacterOffsetBegin>37</CharacterOffsetBegin>
+            <CharacterOffsetEnd>40</CharacterOffsetEnd>
+            <POS>PRP</POS>
+            <NER>O</NER>
+          </token>
+          <token id="8">
+            <word>said</word>
+            <lemma>say</lemma>
+            <CharacterOffsetBegin>41</CharacterOffsetBegin>
+            <CharacterOffsetEnd>45</CharacterOffsetEnd>
+            <POS>VBD</POS>
+            <NER>O</NER>
+          </token>
+          <token id="9">
+            <word>times</word>
+            <lemma>time</lemma>
+            <CharacterOffsetBegin>46</CharacterOffsetBegin>
+            <CharacterOffsetEnd>51</CharacterOffsetEnd>
+            <POS>NNS</POS>
+            <NER>O</NER>
+          </token>
+          <token id="10">
+            <word>100</word>
+            <lemma>100</lemma>
+            <CharacterOffsetBegin>52</CharacterOffsetBegin>
+            <CharacterOffsetEnd>55</CharacterOffsetEnd>
+            <POS>CD</POS>
+            <NER>NUMBER</NER>
+            <NormalizedNER>100.0</NormalizedNER>
+          </token>
+          <token id="11">
+            <word>.</word>
+            <lemma>.</lemma>
+            <CharacterOffsetBegin>55</CharacterOffsetBegin>
+            <CharacterOffsetEnd>56</CharacterOffsetEnd>
+            <POS>.</POS>
+            <NER>O</NER>
+          </token>
+        </tokens>
+        <parse>(ROOT (NP (NP (NP (NNP Cathy)) (PP (IN from) (NP (NNP Hopewell) (NNP Junction)))) (: :) (SBAR (WHNP (WP What)) (S (NP (PRP she)) (VP (VBD said) (NP (QP (NNS times) (CD 100)))))) (. .))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Cathy</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="4">Junction</governor>
+            <dependent idx="2">from</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="4">Junction</governor>
+            <dependent idx="3">Hopewell</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="4">Junction</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="5">:</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="6">What</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="8">said</governor>
+            <dependent idx="7">she</dependent>
+          </dep>
+          <dep type="acl:relcl">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="8">said</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="9">times</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="9">times</governor>
+            <dependent idx="10">100</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="11">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Cathy</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="4">Junction</governor>
+            <dependent idx="2">from</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="4">Junction</governor>
+            <dependent idx="3">Hopewell</dependent>
+          </dep>
+          <dep type="nmod:from">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="4">Junction</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="5">:</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="6">What</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="8">said</governor>
+            <dependent idx="7">she</dependent>
+          </dep>
+          <dep type="acl:relcl">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="8">said</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="9">times</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="9">times</governor>
+            <dependent idx="10">100</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="11">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Cathy</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="4">Junction</governor>
+            <dependent idx="2">from</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="4">Junction</governor>
+            <dependent idx="3">Hopewell</dependent>
+          </dep>
+          <dep type="nmod:from">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="4">Junction</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="5">:</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="6">What</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="8">said</governor>
+            <dependent idx="7">she</dependent>
+          </dep>
+          <dep type="acl:relcl">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="8">said</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="9">times</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="9">times</governor>
+            <dependent idx="10">100</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="11">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Cathy</dependent>
+          </dep>
+          <dep type="dobj" extra="true">
+            <governor idx="8">said</governor>
+            <dependent idx="1">Cathy</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="4">Junction</governor>
+            <dependent idx="2">from</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="4">Junction</governor>
+            <dependent idx="3">Hopewell</dependent>
+          </dep>
+          <dep type="nmod:from">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="4">Junction</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="5">:</dependent>
+          </dep>
+          <dep type="ref">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="6">What</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="8">said</governor>
+            <dependent idx="7">she</dependent>
+          </dep>
+          <dep type="acl:relcl">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="8">said</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="9">times</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="9">times</governor>
+            <dependent idx="10">100</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="11">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-plus-plus-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Cathy</dependent>
+          </dep>
+          <dep type="dobj" extra="true">
+            <governor idx="8">said</governor>
+            <dependent idx="1">Cathy</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="4">Junction</governor>
+            <dependent idx="2">from</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="4">Junction</governor>
+            <dependent idx="3">Hopewell</dependent>
+          </dep>
+          <dep type="nmod:from">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="4">Junction</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="5">:</dependent>
+          </dep>
+          <dep type="ref">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="6">What</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="8">said</governor>
+            <dependent idx="7">she</dependent>
+          </dep>
+          <dep type="acl:relcl">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="8">said</dependent>
+          </dep>
+          <dep type="dobj">
+            <governor idx="8">said</governor>
+            <dependent idx="9">times</dependent>
+          </dep>
+          <dep type="compound">
+            <governor idx="9">times</governor>
+            <dependent idx="10">100</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Cathy</governor>
+            <dependent idx="11">.</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+      <sentence id="2">
+        <tokens>
+          <token id="1">
+            <word>Absolutely</word>
+            <lemma>absolutely</lemma>
+            <CharacterOffsetBegin>57</CharacterOffsetBegin>
+            <CharacterOffsetEnd>67</CharacterOffsetEnd>
+            <POS>RB</POS>
+            <NER>O</NER>
+          </token>
+          <token id="2">
+            <word>.</word>
+            <lemma>.</lemma>
+            <CharacterOffsetBegin>67</CharacterOffsetBegin>
+            <CharacterOffsetEnd>68</CharacterOffsetEnd>
+            <POS>.</POS>
+            <NER>O</NER>
+          </token>
+        </tokens>
+        <parse>(ROOT (FRAG (ADVP (RB Absolutely)) (. .))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Absolutely</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Absolutely</governor>
+            <dependent idx="2">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Absolutely</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Absolutely</governor>
+            <dependent idx="2">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Absolutely</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Absolutely</governor>
+            <dependent idx="2">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Absolutely</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Absolutely</governor>
+            <dependent idx="2">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-plus-plus-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="1">Absolutely</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="1">Absolutely</governor>
+            <dependent idx="2">.</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+    </sentences>
+  </document>
+</root>

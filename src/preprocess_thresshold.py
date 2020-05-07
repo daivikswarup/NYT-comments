@@ -27,8 +27,8 @@ for fil in tqdm.tqdm(os.listdir(inputdir)):
         if len(fscores) == 1 or max(fscores) == 0:
             continue
         median = np.median(fscores)
-        per90 = np.percentile(fscores, 80)
-        per10 = np.percentile(fscores, 20)
+        per90 = np.percentile(fscores, 95)
+        per10 = np.percentile(fscores, 5)
         for comment, score in zip(fcomments, fscores):
             if score >= per90:
                 comments.append(comment)

@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CoreNLP-to-HTML.xsl" type="text/xsl"?>
+<root>
+  <document>
+    <docId>0.txt</docId>
+    <sentences>
+      <sentence id="1">
+        <tokens>
+          <token id="1">
+            <word>This</word>
+            <lemma>this</lemma>
+            <CharacterOffsetBegin>0</CharacterOffsetBegin>
+            <CharacterOffsetEnd>4</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="2">
+            <word>is</word>
+            <lemma>be</lemma>
+            <CharacterOffsetBegin>5</CharacterOffsetBegin>
+            <CharacterOffsetEnd>7</CharacterOffsetEnd>
+            <POS>VBZ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="3">
+            <word>one</word>
+            <lemma>one</lemma>
+            <CharacterOffsetBegin>8</CharacterOffsetBegin>
+            <CharacterOffsetEnd>11</CharacterOffsetEnd>
+            <POS>CD</POS>
+            <NER>NUMBER</NER>
+            <NormalizedNER>1.0</NormalizedNER>
+          </token>
+          <token id="4">
+            <word>giant</word>
+            <lemma>giant</lemma>
+            <CharacterOffsetBegin>12</CharacterOffsetBegin>
+            <CharacterOffsetEnd>17</CharacterOffsetEnd>
+            <POS>JJ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="5">
+            <word>experiment</word>
+            <lemma>experiment</lemma>
+            <CharacterOffsetBegin>18</CharacterOffsetBegin>
+            <CharacterOffsetEnd>28</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="6">
+            <word>in</word>
+            <lemma>in</lemma>
+            <CharacterOffsetBegin>29</CharacterOffsetBegin>
+            <CharacterOffsetEnd>31</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="7">
+            <word>hormonal</word>
+            <lemma>hormonal</lemma>
+            <CharacterOffsetBegin>32</CharacterOffsetBegin>
+            <CharacterOffsetEnd>40</CharacterOffsetEnd>
+            <POS>JJ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="8">
+            <word>manipulation</word>
+            <lemma>manipulation</lemma>
+            <CharacterOffsetBegin>41</CharacterOffsetBegin>
+            <CharacterOffsetEnd>53</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="9">
+            <word>with</word>
+            <lemma>with</lemma>
+            <CharacterOffsetBegin>54</CharacterOffsetBegin>
+            <CharacterOffsetEnd>58</CharacterOffsetEnd>
+            <POS>IN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="10">
+            <word>little</word>
+            <lemma>little</lemma>
+            <CharacterOffsetBegin>59</CharacterOffsetBegin>
+            <CharacterOffsetEnd>65</CharacterOffsetEnd>
+            <POS>JJ</POS>
+            <NER>O</NER>
+          </token>
+          <token id="11">
+            <word>regard</word>
+            <lemma>regard</lemma>
+            <CharacterOffsetBegin>66</CharacterOffsetBegin>
+            <CharacterOffsetEnd>72</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="12">
+            <word>to</word>
+            <lemma>to</lemma>
+            <CharacterOffsetBegin>73</CharacterOffsetBegin>
+            <CharacterOffsetEnd>75</CharacterOffsetEnd>
+            <POS>TO</POS>
+            <NER>O</NER>
+          </token>
+          <token id="13">
+            <word>the</word>
+            <lemma>the</lemma>
+            <CharacterOffsetBegin>76</CharacterOffsetBegin>
+            <CharacterOffsetEnd>79</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="14">
+            <word>consequences</word>
+            <lemma>consequence</lemma>
+            <CharacterOffsetBegin>80</CharacterOffsetBegin>
+            <CharacterOffsetEnd>92</CharacterOffsetEnd>
+            <POS>NNS</POS>
+            <NER>O</NER>
+          </token>
+          <token id="15">
+            <word>,</word>
+            <lemma>,</lemma>
+            <CharacterOffsetBegin>92</CharacterOffsetBegin>
+            <CharacterOffsetEnd>93</CharacterOffsetEnd>
+            <POS>,</POS>
+            <NER>O</NER>
+          </token>
+          <token id="16">
+            <word>both</word>
+            <lemma>both</lemma>
+            <CharacterOffsetBegin>94</CharacterOffsetBegin>
+            <CharacterOffsetEnd>98</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="17">
+            <word>to</word>
+            <lemma>to</lemma>
+            <CharacterOffsetBegin>99</CharacterOffsetBegin>
+            <CharacterOffsetEnd>101</CharacterOffsetEnd>
+            <POS>TO</POS>
+            <NER>O</NER>
+          </token>
+          <token id="18">
+            <word>the</word>
+            <lemma>the</lemma>
+            <CharacterOffsetBegin>102</CharacterOffsetBegin>
+            <CharacterOffsetEnd>105</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="19">
+            <word>parent</word>
+            <lemma>parent</lemma>
+            <CharacterOffsetBegin>106</CharacterOffsetBegin>
+            <CharacterOffsetEnd>112</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="20">
+            <word>and</word>
+            <lemma>and</lemma>
+            <CharacterOffsetBegin>113</CharacterOffsetBegin>
+            <CharacterOffsetEnd>116</CharacterOffsetEnd>
+            <POS>CC</POS>
+            <NER>O</NER>
+          </token>
+          <token id="21">
+            <word>to</word>
+            <lemma>to</lemma>
+            <CharacterOffsetBegin>117</CharacterOffsetBegin>
+            <CharacterOffsetEnd>119</CharacterOffsetEnd>
+            <POS>TO</POS>
+            <NER>O</NER>
+          </token>
+          <token id="22">
+            <word>the</word>
+            <lemma>the</lemma>
+            <CharacterOffsetBegin>120</CharacterOffsetBegin>
+            <CharacterOffsetEnd>123</CharacterOffsetEnd>
+            <POS>DT</POS>
+            <NER>O</NER>
+          </token>
+          <token id="23">
+            <word>child</word>
+            <lemma>child</lemma>
+            <CharacterOffsetBegin>124</CharacterOffsetBegin>
+            <CharacterOffsetEnd>129</CharacterOffsetEnd>
+            <POS>NN</POS>
+            <NER>O</NER>
+          </token>
+          <token id="24">
+            <word>.</word>
+            <lemma>.</lemma>
+            <CharacterOffsetBegin>129</CharacterOffsetBegin>
+            <CharacterOffsetEnd>130</CharacterOffsetEnd>
+            <POS>.</POS>
+            <NER>O</NER>
+          </token>
+        </tokens>
+        <parse>(ROOT (S (NP (DT This)) (VP (VBZ is) (NP (NP (CD one) (JJ giant) (NN experiment)) (PP (IN in) (NP (NP (JJ hormonal) (NN manipulation)) (PP (IN with) (NP (NP (JJ little) (NN regard)) (PP (TO to) (NP (DT the) (NNS consequences)))))))) (, ,) (PP (DT both) (PP (TO to) (NP (DT the) (NN parent))) (CC and) (PP (TO to) (NP (DT the) (NN child))))) (. .))) </parse>
+        <dependencies type="basic-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">experiment</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">experiment</governor>
+            <dependent idx="1">This</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">experiment</governor>
+            <dependent idx="2">is</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="3">one</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="4">giant</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="6">in</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="7">hormonal</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="8">manipulation</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="11">regard</governor>
+            <dependent idx="9">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="11">regard</governor>
+            <dependent idx="10">little</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="11">regard</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="14">consequences</governor>
+            <dependent idx="12">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="14">consequences</governor>
+            <dependent idx="13">the</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="11">regard</governor>
+            <dependent idx="14">consequences</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="15">,</dependent>
+          </dep>
+          <dep type="cc:preconj">
+            <governor idx="19">parent</governor>
+            <dependent idx="16">both</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="19">parent</governor>
+            <dependent idx="17">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="19">parent</governor>
+            <dependent idx="18">the</dependent>
+          </dep>
+          <dep type="nmod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="19">parent</dependent>
+          </dep>
+          <dep type="cc">
+            <governor idx="19">parent</governor>
+            <dependent idx="20">and</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">child</governor>
+            <dependent idx="21">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">child</governor>
+            <dependent idx="22">the</dependent>
+          </dep>
+          <dep type="conj">
+            <governor idx="19">parent</governor>
+            <dependent idx="23">child</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="24">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">experiment</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">experiment</governor>
+            <dependent idx="1">This</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">experiment</governor>
+            <dependent idx="2">is</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="3">one</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="4">giant</dependent>
+          </dep>
+          <dep type="conj:and">
+            <governor idx="5">experiment</governor>
+            <dependent idx="5" copy="1">experiment</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="6">in</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="7">hormonal</dependent>
+          </dep>
+          <dep type="nmod:in">
+            <governor idx="5">experiment</governor>
+            <dependent idx="8">manipulation</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="11">regard</governor>
+            <dependent idx="9">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="11">regard</governor>
+            <dependent idx="10">little</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="11">regard</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="14">consequences</governor>
+            <dependent idx="12">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="14">consequences</governor>
+            <dependent idx="13">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="11">regard</governor>
+            <dependent idx="14">consequences</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="15">,</dependent>
+          </dep>
+          <dep type="cc:preconj">
+            <governor idx="19">parent</governor>
+            <dependent idx="16">both</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="19">parent</governor>
+            <dependent idx="17">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="19">parent</governor>
+            <dependent idx="18">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="5">experiment</governor>
+            <dependent idx="19">parent</dependent>
+          </dep>
+          <dep type="cc">
+            <governor idx="5">experiment</governor>
+            <dependent idx="20">and</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">child</governor>
+            <dependent idx="21">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">child</governor>
+            <dependent idx="22">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="5" copy="1">experiment</governor>
+            <dependent idx="23">child</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="24">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">experiment</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">experiment</governor>
+            <dependent idx="1">This</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">experiment</governor>
+            <dependent idx="2">is</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="3">one</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="4">giant</dependent>
+          </dep>
+          <dep type="conj:and">
+            <governor idx="5">experiment</governor>
+            <dependent idx="5" copy="1">experiment</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="6">in</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="7">hormonal</dependent>
+          </dep>
+          <dep type="nmod:in">
+            <governor idx="5">experiment</governor>
+            <dependent idx="8">manipulation</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="11">regard</governor>
+            <dependent idx="9">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="11">regard</governor>
+            <dependent idx="10">little</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="11">regard</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="14">consequences</governor>
+            <dependent idx="12">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="14">consequences</governor>
+            <dependent idx="13">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="11">regard</governor>
+            <dependent idx="14">consequences</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="15">,</dependent>
+          </dep>
+          <dep type="cc:preconj">
+            <governor idx="19">parent</governor>
+            <dependent idx="16">both</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="19">parent</governor>
+            <dependent idx="17">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="19">parent</governor>
+            <dependent idx="18">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="5">experiment</governor>
+            <dependent idx="19">parent</dependent>
+          </dep>
+          <dep type="cc">
+            <governor idx="5">experiment</governor>
+            <dependent idx="20">and</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">child</governor>
+            <dependent idx="21">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">child</governor>
+            <dependent idx="22">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="5" copy="1">experiment</governor>
+            <dependent idx="23">child</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="24">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">experiment</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">experiment</governor>
+            <dependent idx="1">This</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">experiment</governor>
+            <dependent idx="2">is</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="3">one</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="4">giant</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="6">in</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="7">hormonal</dependent>
+          </dep>
+          <dep type="nmod:in">
+            <governor idx="5">experiment</governor>
+            <dependent idx="8">manipulation</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="11">regard</governor>
+            <dependent idx="9">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="11">regard</governor>
+            <dependent idx="10">little</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="11">regard</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="14">consequences</governor>
+            <dependent idx="12">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="14">consequences</governor>
+            <dependent idx="13">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="11">regard</governor>
+            <dependent idx="14">consequences</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="15">,</dependent>
+          </dep>
+          <dep type="cc:preconj">
+            <governor idx="19">parent</governor>
+            <dependent idx="16">both</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="19">parent</governor>
+            <dependent idx="17">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="19">parent</governor>
+            <dependent idx="18">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="5">experiment</governor>
+            <dependent idx="19">parent</dependent>
+          </dep>
+          <dep type="cc">
+            <governor idx="19">parent</governor>
+            <dependent idx="20">and</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">child</governor>
+            <dependent idx="21">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">child</governor>
+            <dependent idx="22">the</dependent>
+          </dep>
+          <dep type="nmod:to" extra="true">
+            <governor idx="5">experiment</governor>
+            <dependent idx="23">child</dependent>
+          </dep>
+          <dep type="conj:and">
+            <governor idx="19">parent</governor>
+            <dependent idx="23">child</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="24">.</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-plus-plus-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="5">experiment</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="5">experiment</governor>
+            <dependent idx="1">This</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="5">experiment</governor>
+            <dependent idx="2">is</dependent>
+          </dep>
+          <dep type="nummod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="3">one</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="5">experiment</governor>
+            <dependent idx="4">giant</dependent>
+          </dep>
+          <dep type="conj:and">
+            <governor idx="5">experiment</governor>
+            <dependent idx="5" copy="1">experiment</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="6">in</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="7">hormonal</dependent>
+          </dep>
+          <dep type="nmod:in">
+            <governor idx="5">experiment</governor>
+            <dependent idx="8">manipulation</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="11">regard</governor>
+            <dependent idx="9">with</dependent>
+          </dep>
+          <dep type="amod">
+            <governor idx="11">regard</governor>
+            <dependent idx="10">little</dependent>
+          </dep>
+          <dep type="nmod:with">
+            <governor idx="8">manipulation</governor>
+            <dependent idx="11">regard</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="14">consequences</governor>
+            <dependent idx="12">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="14">consequences</governor>
+            <dependent idx="13">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="11">regard</governor>
+            <dependent idx="14">consequences</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="15">,</dependent>
+          </dep>
+          <dep type="cc:preconj">
+            <governor idx="19">parent</governor>
+            <dependent idx="16">both</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="19">parent</governor>
+            <dependent idx="17">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="19">parent</governor>
+            <dependent idx="18">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="5">experiment</governor>
+            <dependent idx="19">parent</dependent>
+          </dep>
+          <dep type="cc">
+            <governor idx="5">experiment</governor>
+            <dependent idx="20">and</dependent>
+          </dep>
+          <dep type="case">
+            <governor idx="23">child</governor>
+            <dependent idx="21">to</dependent>
+          </dep>
+          <dep type="det">
+            <governor idx="23">child</governor>
+            <dependent idx="22">the</dependent>
+          </dep>
+          <dep type="nmod:to">
+            <governor idx="5" copy="1">experiment</governor>
+            <dependent idx="23">child</dependent>
+          </dep>
+          <dep type="punct">
+            <governor idx="5">experiment</governor>
+            <dependent idx="24">.</dependent>
+          </dep>
+        </dependencies>
+      </sentence>
+    </sentences>
+  </document>
+</root>

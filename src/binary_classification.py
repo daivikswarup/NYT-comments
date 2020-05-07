@@ -1,5 +1,6 @@
 # simple baseline
 from data import dataset
+import pickle
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 import sys
@@ -22,4 +23,5 @@ clf = LogisticRegression(random_state=0, verbose=1,max_iter=1000).fit(trainx, tr
 print(clf.score(valx, valy))
 
 
-
+with open('linear_classifier.pkl', 'wb') as f:
+    pickle.dump([clf, vectorizer], f)

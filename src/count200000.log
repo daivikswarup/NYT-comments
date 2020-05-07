@@ -1,0 +1,89 @@
+nohup: ignoring input
+training
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+/home/daivik/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/_logistic.py:939: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html.
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  extra_warning_msg=_LOGISTIC_SOLVER_CONVERGENCE_MSG)
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:  7.9min finished
+0.5795672350994397
+ This problem is unconstrained.
+RUNNING THE L-BFGS-B CODE
+
+           * * *
+
+Machine precision = 2.220D-16
+ N =       200001     M =           10
+
+At X0         0 variables are exactly at the bounds
+
+At iterate    0    f=  3.07336D+05    |proj g|=  1.62890D+04
+
+At iterate   50    f=  2.68983D+05    |proj g|=  1.05273D+04
+
+At iterate  100    f=  2.46818D+05    |proj g|=  6.68580D+03
+
+At iterate  150    f=  2.33080D+05    |proj g|=  2.49957D+03
+
+At iterate  200    f=  2.19692D+05    |proj g|=  1.01465D+04
+
+At iterate  250    f=  2.09509D+05    |proj g|=  3.85460D+03
+
+At iterate  300    f=  2.03154D+05    |proj g|=  1.46099D+03
+
+At iterate  350    f=  1.98583D+05    |proj g|=  1.81033D+03
+
+At iterate  400    f=  1.94793D+05    |proj g|=  1.86398D+03
+
+At iterate  450    f=  1.92182D+05    |proj g|=  2.04934D+03
+
+At iterate  500    f=  1.90082D+05    |proj g|=  5.17774D+02
+
+At iterate  550    f=  1.87705D+05    |proj g|=  3.79829D+03
+
+At iterate  600    f=  1.85826D+05    |proj g|=  9.14391D+02
+
+At iterate  650    f=  1.84333D+05    |proj g|=  2.01765D+03
+
+At iterate  700    f=  1.83324D+05    |proj g|=  3.81650D+03
+
+At iterate  750    f=  1.82462D+05    |proj g|=  1.23615D+03
+
+At iterate  800    f=  1.81770D+05    |proj g|=  6.00372D+02
+
+At iterate  850    f=  1.81345D+05    |proj g|=  1.17308D+03
+
+At iterate  900    f=  1.81029D+05    |proj g|=  7.39854D+02
+
+At iterate  950    f=  1.80704D+05    |proj g|=  2.70740D+03
+
+At iterate 1000    f=  1.80472D+05    |proj g|=  1.95548D+02
+
+           * * *
+
+Tit   = total number of iterations
+Tnf   = total number of function evaluations
+Tnint = total number of segments explored during Cauchy searches
+Skip  = number of BFGS updates skipped
+Nact  = number of active bounds at final generalized Cauchy point
+Projg = norm of the final projected gradient
+F     = final function value
+
+           * * *
+
+   N    Tit     Tnf  Tnint  Skip  Nact     Projg        F
+*****   1000   1134      1     0     0   1.955D+02   1.805D+05
+  F =   180471.80921775365     
+
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT                 
+
+ Cauchy                time 0.000E+00 seconds.
+ Subspace minimization time 0.000E+00 seconds.
+ Line search           time 0.000E+00 seconds.
+
+ Total User time 0.000E+00 seconds.
+
