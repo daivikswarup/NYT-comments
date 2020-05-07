@@ -1,4 +1,4 @@
-from data import dataset_ranking
+from data import dataset_ranking, todense
 from ranknet_model import ranker
 import torch
 import torch.nn as nn
@@ -99,9 +99,20 @@ if __name__ == '__main__':
     model = ranker(traindata.num_features).double().cuda()
     if os.path.exists(savefile):
         model.load_state_dict(torch.load(savefile))
-    #else:
+    else:
         # print(eval(model, valdata))
-    train(model, traindata, valdata, 20, 3e-4, 256)
-    print(eval(model, valdata)[0])
-    print(eval_random(valdata))
+        train(model, traindata, valdata, 20, 3e-4, 256)
+    
+    # print(eval(model, valdata)[0])
+    # print(eval_random(valdata))
+
+
+    # Evaluate on the test article
+    if len(sys.argv) > 3:
+        fname = sys.argv[3]
+        fdata = valdata.vectorized_fmap[fname]
+        vectors = [com[1] for com in fdata]
+        stacked = np.stack(todense(vectors))
+        scores = model(torch.tensor(stacked).double().cuda())
+        print(scores.cpu().detach())
 

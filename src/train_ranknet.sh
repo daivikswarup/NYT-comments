@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-#SBATCH --job-name=ranknet
-#SBATCH --output=logs/ranknet_%j.txt  # output file
-#SBATCH -e logs/ranknet_%j.err        # File to which STDERR will be written
-#SBATCH --gres=gpu:1
+#SBATCH --job-name=ranknet_lin1
+#SBATCH --output=logs/ranknet_lin1_%j.txt  # output file
+#SBATCH -e logs/ranknet_lin1_%j.err        # File to which STDERR will be written
+#SBATCH --gres=gpu:2
 #SBATCH --partition=1080ti-long # Partition to submit to
-#SBATCH --mem=50000
+#SBATCH --mem=60000
 #
 #SBATCH --ntasks=1
 
-python -u train_ranknet.py
+python -u train_ranknet.py tfidf model_tfidf.pt

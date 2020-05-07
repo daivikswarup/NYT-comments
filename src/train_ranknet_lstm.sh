@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-#SBATCH --job-name=ranknet
-#SBATCH --output=logs/ranknet_%j.txt  # output file
-#SBATCH -e logs/ranknet_%j.err        # File to which STDERR will be written
+#SBATCH --job-name=ranknet_lstm
+#SBATCH --output=logs/ranknet_lstm_%j.txt  # output file
+#SBATCH -e logs/ranknet_lstm_%j.err        # File to which STDERR will be written
 #SBATCH --gres=gpu:1
 #SBATCH --partition=1080ti-long # Partition to submit to
 #SBATCH --mem=50000
