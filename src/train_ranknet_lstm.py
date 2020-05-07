@@ -88,8 +88,9 @@ if __name__ == '__main__':
         # vocab  = traindata.vocab
         vocab = None
         valdata = dataset_ranking_lstm('../data/val', vocab)
-        # with open('dataset_lstm.pkl', 'wb') as f:
+        with open('dataset_lstm.pkl', 'wb') as f:
             # pickle.dump((traindata, valdata), f)
+            pass
         #     pass
     print(eval_random(valdata))
     # exit(0)

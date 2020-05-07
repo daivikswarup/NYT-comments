@@ -8,6 +8,7 @@ import numpy as np
 import os
 import tqdm
 import torch
+import torch.nn as nn
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from nltk.tokenize import word_tokenize
 from collections import Counter, defaultdict
@@ -16,7 +17,27 @@ import tqdm
 from scipy.special import logsumexp
 from transformers import *
 import numpy as np
+from sklearn.base import TransformerMixin
+from sklearn.pipeline import FeatureUnion
 
+
+class CustomVectorizer(TransformerMixin):
+    def __init__(self):
+        pass
+    def fit(self, X, y=None):
+        return self
+    def transform(self, X, y=None):
+        return np.array([[len(x.split())/70.0, len(x)/(1+len(x.split()))] for x in X])
+    def get_feature_names(self):
+        return ['wlength', 'wsize']
+
+
+def todense(vecs):
+    try:
+        dense = [vec.todense() for vec in vecs]
+    except:
+        dense = vecs
+    return dense
 
 def logsigmoid(x):
     mx = np.maximum(-x, 0)
@@ -31,21 +52,33 @@ class BertVectorizer:
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         self.model = BertModel.from_pretrained('bert-base-uncased')
         self.model.eval()
-        self.model.cuda()
+        print("Let's use", torch.cuda.device_count(), "GPUs!")
+        self.model = nn.DataParallel(self.model)
+        self.model.to('cuda')
     
     def fit(self, x):
         pass
 
     def transform(self, comments):
-        encoded = [torch.tensor([self.tokenizer.encode(x)], device='cuda') for \
+        encoded = [torch.tensor([self.tokenizer.encode(x)], device='cuda',
+                                requires_grad=False) for \
                    x in tqdm.tqdm(comments, desc='encoding')]
         vectors = []
-        for enc in tqdm.tqdm(encoded):
-            output = self.model(torch.tensor(enc,
-                                             device=DEVICE))
-            vectors.append(output[0][0,0,:].cpu().detach().numpy())
-            del output
-        return np.stack(vectors)
+        for i in tqdm.trange(0, len(comments), 4):
+            encoded_batch = [self.tokenizer.encode(x) for x in \
+                             comments[i:i+4]]
+            maxsize = max([len(x) for x in encoded_batch])
+            for x in encoded_batch:
+                x.extend([self.tokenizer.pad_token_id] * (maxsize-len(x)))
+            enc = torch.tensor(encoded_batch, device='cuda',
+                               requires_grad=False)
+            enc = enc[:,:512]
+            output = self.model(enc)
+            vec = output[0][:,0,:].cpu().detach().numpy()
+            vectors.append(vec)
+        return np.concatenate(vectors, axis = 0)
+    def get_feature_names(self):
+        return [0]*768
 
 
 
@@ -95,7 +128,7 @@ class Vocab:
 
 
 class dataset:
-    def __init__(self, fil, vectorizer=None):
+    def __init__(self, fil, vectorizer=None, vectype='tfidf'):
         self.comments = []
         self.labels = []
         with open(fil, 'r') as f:
@@ -104,10 +137,19 @@ class dataset:
                 self.comments.append(comment)
                 self.labels.append(int(label))
         if vectorizer is None:
-            # vectorizer = TfidfVectorizer(ngram_range=(1,2), max_features=200000)
-            # vectorizer = CountVectorizer(ngram_range = (1,2),\
-            #                             max_features=20000)
-            vectorizer = BertVectorizer()
+            if vectype=='tfidf':
+                vectorizer = TfidfVectorizer(ngram_range=(1,2), max_features=200000)
+                #vectorizer = TfidfVectorizer(min_df=20)
+            elif vectype=='count':
+                vectorizer = CountVectorizer(ngram_range=(1,2), max_features=200000)
+                # vectorizer = CountVectorizer(min_df=20)
+            elif vectype == 'bert':
+                vectorizer = BertVectorizer()
+            elif vectype == 'tfidf_length':
+                tf = TfidfVectorizer(ngram_range=(1,2), max_features=200000)
+                l = CustomVectorizer()
+                print('using custom')
+                vectorizer =  FeatureUnion([('tfidf',tf), ('length',l)])
             vectorizer.fit(self.comments)
         self.vectorizer = vectorizer
         self.vectors = self.vectorizer.transform(self.comments)
@@ -204,14 +246,18 @@ class dataset_bert:
 
 
 class dataset_ranking:
-    def __init__(self, directory, vectorizer=None):
+    def __init__(self, directory, vectorizer=None, vectype='tfidf'):
         fmap = defaultdict(list)
         self.all_comments = []
         print('reading data')
+        self.vectype = vectype
         for fil in os.listdir(directory):
             fname = os.path.join(directory, fil)
             with open(fname, 'r') as f:
-                for line in f:
+                lines = f.readlines()
+                if len(lines) <2:
+                    continue
+                for line in lines:
                     comment, score = line.split('\t')
                     score = int(score)
                     fmap[fil].append((comment, score))
@@ -219,12 +265,28 @@ class dataset_ranking:
         print('fitting vectorizer')
 
         if vectorizer is None:
-            vectorizer = TfidfVectorizer(min_df=20)
-            # vectorizer = CountVectorizer(ngram_range=(1,2))
+            if vectype=='tfidf':
+                vectorizer = TfidfVectorizer(min_df=20)
+            elif vectype=='count':
+                vectorizer = CountVectorizer(min_df=20)
+            elif vectype == 'bert':
+                vectorizer = BertVectorizer()
+            elif vectype == 'tfidf_length':
+                tf = TfidfVectorizer(min_df=20)
+                l = CustomVectorizer()
+                print('using custom')
+                vectorizer =  FeatureUnion([('tfidf',tf), ('length',l)])
+            elif vectype == 'count_length':
+                tf = CountVectorizer(min_df=20)
+                l = CustomVectorizer()
+                print('using custom')
+                vectorizer =  FeatureUnion([('tfidf',tf), ('length',l)])
+
             vectorizer.fit(self.all_comments)
         self.num_features = len(vectorizer.get_feature_names())
         self.vectorizer = vectorizer
         self.vectorized_fmap = defaultdict(list)
+        i=0
         for fil, data in tqdm.tqdm(fmap.items(), desc='Transforming'):
             comments = [x[0] for x in data]
             max_score = np.max([x[1] for x in data])
@@ -233,6 +295,9 @@ class dataset_ranking:
             vecs = self.vectorizer.transform(comments)
             self.vectorized_fmap[fil] = [(comment, vector, score, score/max_score) for
                             ((comment, score),vector) in zip(data, vecs)]
+            if i%100 == 0:
+                print('%d/%d done'%(i, len(fmap)))
+            i+=1
         # self.all_ids = []
         # for fil, data in tqdm.tqdm(self.vectorized_fmap.items()):
         #     n = len(data)
@@ -264,17 +329,18 @@ class dataset_ranking:
                 selected_file = self.vectorized_fmap[self.files[s]]
                 a,b = np.random.choice(len(selected_file), 2, replace=False)
                 if selected_file[a][2] > selected_file[b][2]+DELTA:
-                    vec1.append(selected_file[a][1].todense())
-                    vec2.append(selected_file[b][1].todense())
+                    vec1.append(selected_file[a][1])
+                    vec2.append(selected_file[b][1])
                     targets.append(1.0)
                 elif selected_file[b][2] > selected_file[a][2]+DELTA:
                     targets.append(0.0)
-                    vec1.append(selected_file[a][1].todense())
-                    vec2.append(selected_file[b][1].todense())
+                    vec1.append(selected_file[a][1])
+                    vec2.append(selected_file[b][1])
                 # targets.append(sigmoid(selected_file[a][3] - \
                 #                        selected_file[b][3]))
-            vec1 = np.stack(vec1)
-            vec2 = np.stack(vec2)
+
+            vec1 = np.stack(todense(vec1))
+            vec2 = np.stack(todense(vec2))
             targets = np.stack(targets)
             yield vec1, vec2, targets
 
@@ -290,7 +356,7 @@ class dataset_ranking:
     def eval_batches(self):
         for fil in tqdm.tqdm(self.vectorized_fmap):
             comments, vectors, unnormalized, normalized_scores = zip(*self.vectorized_fmap[fil])
-            vectors = [x.todense() for x in vectors]
+            vectors = todense(vectors)
             yield np.stack(vectors), np.stack(normalized_scores)
 
 
@@ -304,7 +370,10 @@ class dataset_ranking_lstm:
         for fil in os.listdir(directory):
             fname = os.path.join(directory, fil)
             with open(fname, 'r') as f:
-                for line in f:
+                lines = f.readlines()
+                if len(lines) < 2:
+                    continue
+                for line in lines:
                     comment, score = line.split('\t')
                     score = int(score)
                     fmap[fil].append((comment, score))
@@ -341,7 +410,7 @@ class dataset_ranking_lstm:
         
         
     
-    def get_batches(self, bsize = 64):
+    def get_batches(self, bsize = 32):
         # permutation = np.random.permutation(len(self.all_ids))
         # each comment gets seen once on average
         for i in tqdm.trange(int(self.epoch_size/bsize), desc='Training batches'):
@@ -352,17 +421,13 @@ class dataset_ranking_lstm:
                 s = np.random.choice(len(self.files), p=self.num_samples)
                 selected_file = self.vectorized_fmap[self.files[s]]
                 a,b = np.random.choice(len(selected_file), 2, replace=False)
-                vec1.append(torch.tensor(selected_file[a][1], device=DEVICE,\
-                                        dtype=torch.long))
-                vec2.append(torch.tensor(selected_file[b][1], device=DEVICE,\
-                                        dtype=torch.long))
-                if selected_file[a][3] > selected_file[b][3]+DELTA:
+                if selected_file[a][2] > selected_file[b][2]+DELTA:
                     targets.append(1.0)
                     vec1.append(torch.tensor(selected_file[a][1], device=DEVICE,\
                                         dtype=torch.long))
                     vec2.append(torch.tensor(selected_file[b][1], device=DEVICE,\
                                         dtype=torch.long))
-                elif selected_file[b][3] > selected_file[a][3]+DELTA:
+                elif selected_file[b][2] > selected_file[a][2]+DELTA:
                     targets.append(0.0)
                     vec1.append(torch.tensor(selected_file[a][1], device=DEVICE,\
                                         dtype=torch.long))
@@ -372,7 +437,7 @@ class dataset_ranking_lstm:
                                   dtype=torch.long)
             l2 = torch.tensor([len(x) for x in vec2], device=DEVICE,\
                                   dtype=torch.long)
-            targets = torch.tensor(np.stack(targets), device=DEVICE, \
+            targets = torch.tensor(np.array(targets), device=DEVICE, \
                                    dtype=torch.float)
             yield vec1, l1, vec2,l2, targets
 

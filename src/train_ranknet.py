@@ -8,9 +8,12 @@ import tqdm
 import numpy as np
 import pickle
 import os
+import sys
 
 
 P = 5
+vectype = sys.argv[1]
+savefile = sys.argv[2]
 
 def dcg(args, rels):
     score = 0.0
@@ -33,10 +36,10 @@ def eval(model, dataset):
     model.eval()
     ndcgs = []
     for vecs, scores in dataset.eval_batches():
-        vecs = torch.tensor(vecs).cuda()
+        vecs = torch.tensor(vecs).double().cuda()
         preds = model(vecs)
         ndcgs.append(compute_ndcg(preds.cpu().detach().numpy(), scores))
-    return np.mean(ndcgs)
+    return np.mean(ndcgs), ndcgs
 
 def eval_random(dataset):
     ndcgs = []
@@ -60,38 +63,45 @@ def eval_random(dataset):
 def train(model, train_dataset,val_dataset, n_epochs, lr, bs): 
     optimizer = optim.Adam(model.parameters(), lr= lr)
     loss_func = nn.BCEWithLogitsLoss() 
+    best_ndcg = -1
     for e in tqdm.trange(n_epochs):
         model.train()
         for x1, x2, targ in train_dataset.get_batches(bs):
             optimizer.zero_grad()
-            x1, x2, targ = torch.tensor(x1).cuda(), torch.tensor(x2).cuda(),\
+            x1, x2, targ = torch.tensor(x1).double().cuda(),\
+                               torch.tensor(x2).double().cuda(),\
                                     torch.tensor(targ).cuda()
             pred = model(x1, x2)
             loss = loss_func(pred.squeeze(-1), targ)
             loss.backward()
             optimizer.step()
-        ndcg = eval(model, val_dataset) 
+        ndcg, all_ndcg = eval(model, val_dataset) 
+        if ndcg > best_ndcg:
+            torch.save(model.state_dict(), savefile)
+            best_ndcg = ndcg
+            with open(savefile+'.preds.pkl', 'wb') as f:
+                pickle.dump(all_ndcg, f)
         print('NDCG after %d epochs = %f'%(e, ndcg))
         torch.save(model.state_dict(), 'ranker.pt')
     return model
 
 if __name__ == '__main__':
-    if os.path.exists('dataset.pkl'):
-        with open('dataset.pkl', 'rb') as f:
+    if os.path.exists('dataset_%s.pkl'%vectype):
+        with open('dataset_%s.pkl'%vectype, 'rb') as f:
             traindata, valdata = pickle.load(f)
     else:
-        traindata = dataset_ranking('../data/train')
+        traindata = dataset_ranking('../data/train', vectype=vectype)
         vectorizer = traindata.vectorizer
-        valdata = dataset_ranking('../data/val', vectorizer)
-        with open('dataset.pkl', 'wb') as f:
+        valdata = dataset_ranking('../data/val', vectorizer, vectype=vectype)
+        with open('dataset_%s.pkl'%vectype, 'wb') as f:
             pickle.dump((traindata, valdata), f)
     print(traindata.num_features)
     model = ranker(traindata.num_features).double().cuda()
-    if os.path.exists('ranker_lin.pt'):
-        model.load_state_dict(torch.load('ranker_lin.pt'))
-    else:
+    if os.path.exists(savefile):
+        model.load_state_dict(torch.load(savefile))
+    #else:
         # print(eval(model, valdata))
-        train(model, traindata, valdata, 10, 3e-4, 256)
-    print(eval(model, valdata))
+    train(model, traindata, valdata, 20, 3e-4, 256)
+    print(eval(model, valdata)[0])
     print(eval_random(valdata))
 

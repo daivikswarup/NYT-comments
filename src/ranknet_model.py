@@ -25,7 +25,7 @@ class ranker(nn.Module):
 
     """Docstring for ranker. """
 
-    def __init__(self, num_features, hidden_dims = [100]):
+    def __init__(self, num_features, hidden_dims = []):
         """TODO: to be defined. """
         nn.Module.__init__(self)
         self.mlp = MLP(num_features, hidden_dims)
@@ -38,9 +38,9 @@ class ranker(nn.Module):
 
 
 class LSTM_ranker(nn.Module):
-    def __init__(self, vocab_size, embedding_size, num_layers, pad_id):
+    def __init__(self, vocab_size, embedding_size, num_layers, pad_id, emb=None):
         super().__init__()
-        self.model = lstm(vocab_size, embedding_size, num_layers, pad_id)
+        self.model = lstm(vocab_size, embedding_size, num_layers, pad_id, emb)
 
     def forward(self, input1, l1, input2=None, l2=None):
         if input2 is None:
